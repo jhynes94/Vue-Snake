@@ -1,6 +1,6 @@
 # vue-snake
 
-## Project setup
+## Description
 The purpose of this project is to familiarize myself with the Vue framework and use JavaScript and Canvas to create a basic game. It was a fun pet project. I might do the same in C, and Python to improve
 
 ## Project setup
