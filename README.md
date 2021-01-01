@@ -25,3 +25,8 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Things to add for later (If interested)
+* Score Board
+* Not allowing snake to reverse into itself and lose game
+* Better graphics
