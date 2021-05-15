@@ -7,7 +7,7 @@
 export default {
     name: 'Snake',
     props: {
-    msg: String
+        msg: String
     },
     data() {
         return {
@@ -90,7 +90,6 @@ export default {
                 newPos = [this.snakePostiton[0][0] + 1, this.snakePostiton[0][1]]
             }
             
-                //console.log(this.snakePostiton);
             //Check if snake collidied with itself
             for(var i=0; i< this.snakePostiton.length; i++){
                 if(this.snakePostiton[i][0] == newPos[0] && this.snakePostiton[i][1] == newPos[1]){
@@ -112,6 +111,7 @@ export default {
             if(this.snakePostiton[0][0] == this.foodPostiton[0] && this.snakePostiton[0][1] == this.foodPostiton[1]){
                 console.log("Food eaten")
                 this.placeFoodPosition()
+                this.$emit('IncrementScore'); //Increment score in parent component
             }
             else {
                 this.snakePostiton.pop() //remove last to stop snake from growing
@@ -158,6 +158,7 @@ export default {
 
 
         endGame(){
+            this.$emit('ClearScore'); //Clear score in parent component
             //Restart Game
             clearInterval(this.gameTimer);
             this.prepareForGame()
@@ -190,17 +191,23 @@ export default {
         onKeyDown(event) {
             const codes = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Space'];
             if (!codes.includes(event.code)) return;
+            
+            //Verifies if snake will collide with itself before it changes direction
             switch (event.code) {
             case 'ArrowUp':
+                if(this.snakeDirection == 'down') return;
                 this.changeSnakeDirection('up');
                 break;
             case 'ArrowDown':
+                if(this.snakeDirection == 'up') return;
                 this.changeSnakeDirection('down');
                 break;
             case 'ArrowLeft':
+                if(this.snakeDirection == 'right') return;
                 this.changeSnakeDirection('left');
                 break;
             case 'ArrowRight':
+                if(this.snakeDirection == 'left') return;
                 this.changeSnakeDirection('right');
                 break;
             case 'Space':

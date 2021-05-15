@@ -1,14 +1,14 @@
 <template>
-  <Snake/>
+  <WelcomePage/>
 </template>
 
 <script>
-import Snake from './components/Game.vue'
+import WelcomePage from './components/WelcomePage.vue'
 
 export default {
   name: 'App',
   components: {
-    Snake
+    WelcomePage
   }
 }
 </script>
